@@ -1,17 +1,13 @@
-import { GlobalStyle } from './styles/globalStyles';
-import { RoutesMain } from './Routes';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.tsx'
+import { BrowserRouter } from 'react-router-dom';
 
 
-function App() {
-  return (
-    <>
-      <GlobalStyle/>
-      <ToastContainer/>
-      <RoutesMain/>
-    </>
-  )
-}
-
-export default App
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+)
