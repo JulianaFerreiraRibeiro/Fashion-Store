@@ -12,4 +12,8 @@ export const StyledLoginSection = styled.section`
         flex-direction: column;
         gap: 20px;
     }
+
+    h2{
+        font-weight: var(--font-weight-1);
+    }
 `
