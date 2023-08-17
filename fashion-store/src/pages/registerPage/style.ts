@@ -11,6 +11,10 @@ export const StyledRegisterSection = styled.section`
         height: 43.1875rem;
     }
 
+    h2{
+        font-weight: 500;
+    }
+
     .arrow{
         width: 24px;
         height: 24px;
