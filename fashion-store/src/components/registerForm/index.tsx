@@ -1,11 +1,11 @@
 import { useContext } from "react"
-import { Button } from "../button"
 import { Input } from "../input"
 import { StyledRegisterForm } from "./style"
 import { AdminContext } from "../../providers/AdminContext"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { IRegisterFormValues, schema } from "./registerSchema"
+import { StyledButton } from "../../styles/button"
 
 export interface IRegisterFormData{
     name: string;
@@ -33,7 +33,7 @@ export const RegisterForm = () => {
             <Input type = "email" placeholder="EMAIL" register = {register("email")} error={errors.email?.message}/>
             <Input type = "password" placeholder="SENHA" register = {register("password")} error={errors.password?.message}/>
             <Input type = "password" placeholder="CONFIRMAR SENHA" register = {register("confirm")} error={errors.confirm?.message}/>
-            <Button text = "CADASTRAR-SE"/>
+            <StyledButton buttonsize = "medium" buttoncolor = "black">CADASTRAR-SE</StyledButton>
         </StyledRegisterForm>
     )
 }
