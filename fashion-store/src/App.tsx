@@ -5,6 +5,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Header } from './components/header';
 import { AdminProvider } from './providers/AdminContext';
+import { Footer } from './components/footer';
+
 
 
 function App() {
@@ -16,6 +18,7 @@ function App() {
         <ToastContainer/>
         <RoutesMain/>
       </AdminProvider>
+      <Footer/>
     </>
   )
 }
