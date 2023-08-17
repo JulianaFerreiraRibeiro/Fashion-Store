@@ -25,8 +25,9 @@ export const GlobalStyle = createGlobalStyle`
 
     a{
         text-decoration: none;
-        color: var(--color-black)
+        color: var(--color-black);
     }
+
     
     html{
         font-family: 'Oswald', sans-serif;
@@ -39,6 +40,7 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: var(--font-weight-2);
         letter-spacing: .125rem;
     }
+
 
     input, input::placeholder{
         font-family: 'Oswald', sans-serif;

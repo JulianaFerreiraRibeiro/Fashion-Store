@@ -8,13 +8,12 @@ import { AdminProvider } from './providers/AdminContext';
 import { Footer } from './components/footer';
 
 
-
 function App() {
   return (
     <>
       <GlobalStyle/>
+      <Header/>
       <AdminProvider>
-        <Header/>
         <ToastContainer/>
         <RoutesMain/>
       </AdminProvider>

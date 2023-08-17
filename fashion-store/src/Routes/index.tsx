@@ -1,3 +1,4 @@
+import { AdminDashboardPage } from '../pages/adminDashboardHomePage';
 import { LoginPage } from '../pages/loginPage';
 import { RegisterPage } from '../pages/registerPage/index';
 import { Route, Routes } from 'react-router-dom';
@@ -8,6 +9,7 @@ export const RoutesMain = () => {
         <Routes>
                 <Route path="/register" element={<RegisterPage/>}/>
                 <Route path = "/login" element = {<LoginPage/>} /> 
+                <Route path = "/dashboard" element={<AdminDashboardPage/>}/>
         </Routes>
     </>
    )

@@ -11,10 +11,6 @@ export const StyledRegisterSection = styled.section`
         height: 43.1875rem;
     }
 
-    h2{
-        font-weight: 500;
-    }
-
     .arrow{
         width: 24px;
         height: 24px;
@@ -30,6 +26,10 @@ export const StyledRegisterSection = styled.section`
         letter-spacing: .125rem;
     }
 
+    h2{
+        font-weight: var(--font-weight-1);
+    }
+    
     .registerContainer{
         display: flex;
         flex-direction: column;
