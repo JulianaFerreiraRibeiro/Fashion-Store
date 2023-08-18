@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     buttoncolor: "black" | "white";
-    buttonsize: "small" | "medium";
+    buttonsize: "small" | "medium" | "big";
   }
 
 export const StyledButton = styled.button<ButtonProps>`
@@ -38,16 +38,10 @@ ${({buttoncolor}) => {
                     return css`
                         width: 209px;
                     `
+                case "big":
+                    return css`
+                        width: 282px;
+                    `
             }
         }}
-
-
-        // width: 209px;
-        // height: 60px;
-        // background-color: var(--color-black);
-        // color: var(--color-white);
-        // border: none;
-        // letter-spacing: 2px;
-        // font-weight: var(--font-weight-2);
-        // font-size: var(--font-size-5);
 `

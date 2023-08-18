@@ -6,8 +6,8 @@ export const AdminDashboardPage = () => {
     return(
         <StyledDashboardSection>
             <div>
-                <Link to = "">Início</Link>
-                <Link to = "">Produtos</Link>
+                <Link to = "/dashboard">INÍCIO</Link>
+                <Link to = "/dashboard/products">PRODUTOS</Link>
             </div>
             <TitleTwo>PAINEL DO ADMINISTRADOR</TitleTwo>
             <Paragraph>Seja bem vindo, administrador!</Paragraph>

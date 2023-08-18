@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { StyledTitleOne, StyledTitleTwo, SyledParagraph } from './../../styles/typography';
+import { StyledTitleOne, StyledTitleThree, StyledTitleTwo, SyledParagraph } from './../../styles/typography';
 
 interface ITypographyProps{
     children: ReactNode;
@@ -18,6 +18,14 @@ export const TitleTwo = ({children}: ITypographyProps) => {
         <StyledTitleTwo>
             {children}
         </StyledTitleTwo>
+    )
+}
+
+export const TitleThree = ({children}: ITypographyProps) => {
+    return (
+        <StyledTitleThree>
+            {children}
+        </StyledTitleThree>
     )
 }
 
