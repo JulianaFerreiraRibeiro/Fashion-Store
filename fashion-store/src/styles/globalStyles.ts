@@ -28,7 +28,9 @@ export const GlobalStyle = createGlobalStyle`
         color: var(--color-black);
     }
 
-    
+    textarea{
+        resize: none;
+    }
     html{
         font-family: 'Oswald', sans-serif;
     }
@@ -47,8 +49,33 @@ export const GlobalStyle = createGlobalStyle`
     }
 
 
-    input, input::placeholder{
+    input, textarea, textarea::placeholder, input::placeholder{
         font-family: 'Oswald', sans-serif;
         cursor: pointer;
     }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        border: 1px solid white;
+        -webkit-text-fill-color: black !important;
+        -webkit-box-shadow: 0 0 0px 1000px var(--color-grey) inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+    input[type=number]::-webkit-inner-spin-button { 
+        -webkit-appearance: none;
+    
+    }
+    input[type=number] { 
+        -moz-appearance: textfield;
+        appearance: textfield;
+
+    }
+
 `

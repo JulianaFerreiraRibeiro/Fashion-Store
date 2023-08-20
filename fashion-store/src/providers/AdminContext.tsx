@@ -71,6 +71,7 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
                 }
             })
             setProductsList([...productsList, data])
+            console.log(data)
             toast.success("Produto criado com sucesso")
         } catch (error) {
             console.log(error)

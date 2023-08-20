@@ -55,4 +55,17 @@ export const StyledCreateModalForm = styled.form`
         align-self: flex-end;
         margin-right: 10px;
     }
+
+    textarea{
+        width: 631px;
+        height: 150px;
+        border: none;
+        padding: .9375rem;
+        background-color: var(--color-gray);
+    }
+
+    p{
+        color: red;
+        font-size: 15px;
+    }
 `

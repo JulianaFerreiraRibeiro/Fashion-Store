@@ -4,7 +4,7 @@ import { Paragraph } from "../typography";
 
 export type tInput = "medium" | "big";
 interface IInputProps{
-    type: "text" | "number" | "email";
+    type: "text" | "number" | "email" | "password";
     placeholder: string;
     register: UseFormRegisterReturn<string>;
     error?: string;

@@ -29,10 +29,10 @@ export const RegisterForm = () => {
 
     return(
         <StyledRegisterForm onSubmit={handleSubmit(submit)}>
-            <Input type = "text" placeholder="NOME" register = {register("name")} error={errors.name?.message}/>
-            <Input type = "email" placeholder="EMAIL" register = {register("email")} error={errors.email?.message}/>
-            <Input type = "password" placeholder="SENHA" register = {register("password")} error={errors.password?.message}/>
-            <Input type = "password" placeholder="CONFIRMAR SENHA" register = {register("confirm")} error={errors.confirm?.message}/>
+            <Input type = "text" placeholder="NOME" register = {register("name")} error={errors.name?.message} inputsize="medium"/>
+            <Input type = "email" placeholder="EMAIL" register = {register("email")} error={errors.email?.message} inputsize="medium"/>
+            <Input type = "password" placeholder="SENHA" register = {register("password")} error={errors.password?.message} inputsize="medium"/>
+            <Input type = "password" placeholder="CONFIRMAR SENHA" register = {register("confirm")} error={errors.confirm?.message} inputsize="medium"/>
             <StyledButton buttonsize = "medium" buttoncolor = "black">CADASTRAR-SE</StyledButton>
         </StyledRegisterForm>
     )
