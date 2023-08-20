@@ -1,13 +1,17 @@
-import { ReactNode, createContext } from "react"
+import { ReactNode, createContext, useState } from "react"
 import { api } from "../services/api"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { IRegisterFormData } from "../components/registerForm";
 import { ILoginFormData } from "../components/loginForm";
+import { ICreateProducts } from "../components/modalDashboardCreate";
 
 export interface IAdminContext{
     handleRegister: (formData: IRegisterFormData) => Promise<void>;
     handleLogin: (formData: ILoginFormData) => Promise<void>;
+    isModalCreateOpen: boolean;
+    setIsModalCreateOpen: React.Dispatch<React.SetStateAction<boolean>>; 
+    handleCreateProduct: (formData: ICreateProducts) => Promise<void>;
 }
 
 export interface IAdminProviderProps {
@@ -21,13 +25,15 @@ export interface IAdmin{
 }
 
 export interface IAdminResponse{
-    acessToken: string;
+    accessToken: string;
     user: IAdmin;
 }
 
 export const AdminContext = createContext({} as IAdminContext)
 
 export const AdminProvider = ({children}: IAdminProviderProps) => {
+    const [isModalCreateOpen, setIsModalCreateOpen] = useState(false)
+    const [productsList, setProductsList] = useState<ICreateProducts[]>([])
 
     const navigate = useNavigate()
     
@@ -47,6 +53,7 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
         try{
             const {data} = await api.post<IAdminResponse>("/login", formData)
             console.log(data)
+            localStorage.setItem("@FashionStore:token", data.accessToken)
             toast.success("Login realizado com sucesso")
             navigate("/dashboard")
         } catch (error) {
@@ -55,8 +62,25 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
         }
     }
 
+    const handleCreateProduct = async(formData: ICreateProducts) => {
+        const token = localStorage.getItem("@FashionStore:token")
+        try{
+            const {data} = await api.post("/products", formData, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            setProductsList([...productsList, data])
+            console.log(data)
+            toast.success("Produto criado com sucesso")
+        } catch (error) {
+            console.log(error)
+            toast.error("Produto não foi criado")
+        }
+    }
+
     return(
-        <AdminContext.Provider value = {{handleRegister, handleLogin}}>
+        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct}}>
             {children}
         </AdminContext.Provider>
     )

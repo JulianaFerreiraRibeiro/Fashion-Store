@@ -1,4 +1,4 @@
-import {z} from "zod"
+import { z } from "zod"
 
 export const schema = z.object({
     name: z.string().nonempty("O nome é obrigatório").min(2, "O nome precisa conter pelo menos 2 caracteres"),
