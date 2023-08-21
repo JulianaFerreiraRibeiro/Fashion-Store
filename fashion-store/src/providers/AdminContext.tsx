@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react"
+import { ReactNode, createContext, useEffect, useState } from "react"
 import { api } from "../services/api"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
@@ -12,6 +12,7 @@ export interface IAdminContext{
     isModalCreateOpen: boolean;
     setIsModalCreateOpen: React.Dispatch<React.SetStateAction<boolean>>; 
     handleCreateProduct: (formData: ICreateProducts) => Promise<void>;
+    productsList: IListProducts[];
 }
 
 export interface IAdminProviderProps {
@@ -29,11 +30,19 @@ export interface IAdminResponse{
     user: IAdmin;
 }
 
+export interface IListProducts {
+    id: number;
+    name: string;
+    price: number;
+    description: string;
+    image:string;
+}
+
 export const AdminContext = createContext({} as IAdminContext)
 
 export const AdminProvider = ({children}: IAdminProviderProps) => {
     const [isModalCreateOpen, setIsModalCreateOpen] = useState(false)
-    const [productsList, setProductsList] = useState<ICreateProducts[]>([])
+    const [productsList, setProductsList] = useState<IListProducts[]>([])
 
     const navigate = useNavigate()
     
@@ -79,8 +88,21 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
         }
     }
 
+    useEffect(() => {
+        const handleReadProducts = async () => {
+            try{
+                const {data} = await api.get("/products")
+                setProductsList(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        handleReadProducts()
+    }, [])
+
+
     return(
-        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct}}>
+        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, productsList}}>
             {children}
         </AdminContext.Provider>
     )

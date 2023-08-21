@@ -1,4 +1,4 @@
-import { AdminDashboardCreateProductsPage } from '../pages/adminCreateDashboardPage';
+import { AdminDashboardCreateProductsPage } from '../pages/adminProductsPage';
 import { AdminDashboardPage } from '../pages/adminDashboardHomePage';
 import { LoginPage } from '../pages/loginPage';
 import { RegisterPage } from '../pages/registerPage/index';

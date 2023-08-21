@@ -35,6 +35,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Oswald', sans-serif;
     }
 
+
     button{
         cursor: pointer;
         display: flex;
@@ -76,6 +77,10 @@ export const GlobalStyle = createGlobalStyle`
         -moz-appearance: textfield;
         appearance: textfield;
 
+    }
+
+    li{
+        list-style: none;
     }
 
 `
