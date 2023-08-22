@@ -10,7 +10,7 @@ interface IProductCardProps{
 }
 
 export const ProductCard = ({product}: IProductCardProps) => {
-    const {handleDeleteProduct} = useContext(AdminContext)
+    const {handleDeleteProduct, setEditIdProduct} = useContext(AdminContext)
     const price = Number(product.price)
 
     return (
@@ -23,7 +23,7 @@ export const ProductCard = ({product}: IProductCardProps) => {
                 </div>
             </div>
             <div className="productController">
-                <img src = {EditButton} alt = "lápis na coloração preta, para editar produtos"/>
+                <img src = {EditButton} alt = "lápis na coloração preta, para editar produtos" onClick = {() => setEditIdProduct(product)}/>
                 <img src = {DeleteButton} alt = "lixeira na coloração preta, para excluir produtos" onClick = {() => handleDeleteProduct(product.id)}/>
             </div>
         </StyledAdminProductsCards>

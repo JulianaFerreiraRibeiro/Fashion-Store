@@ -14,6 +14,8 @@ export interface IAdminContext{
     handleCreateProduct: (formData: ICreateProducts) => Promise<void>;
     productsList: IListProducts[];
     handleDeleteProduct: (productId: number) => Promise<void>;
+    handleEditProduct: (productId: number, formData: ICreateProducts) => Promise<void>;
+    setEditIdProduct: React.Dispatch<React.SetStateAction<IListProducts | null>>;
 }
 
 export interface IAdminProviderProps {
@@ -36,7 +38,7 @@ export interface IListProducts {
     name: string;
     price: number;
     description: string;
-    image:string;
+    image: string;
 }
 
 export const AdminContext = createContext({} as IAdminContext)
@@ -44,6 +46,7 @@ export const AdminContext = createContext({} as IAdminContext)
 export const AdminProvider = ({children}: IAdminProviderProps) => {
     const [isModalCreateOpen, setIsModalCreateOpen] = useState(false)
     const [productsList, setProductsList] = useState<IListProducts[]>([])
+    const [editIdProduct, setEditIdProduct] = useState<IListProducts | null>(null)
 
     const navigate = useNavigate()
     
@@ -117,9 +120,31 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
         }
     }
 
+    const handleEditProduct = async(productId: number, formData: ICreateProducts) => {
+        const token = localStorage.getItem("@FashionStore:token")
+        try{
+            await api.patch(`/products/${productId}`, formData, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }) 
+            const editedProduct = productsList.map((product) => {
+                if(productId === product.id){
+                    return {...product, ...formData}
+                } else {
+                    return product
+                }
+            })
+            setProductsList(editedProduct)
+            toast.success("Produto editado com sucesso")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     return(
-        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, productsList, handleDeleteProduct}}>
+        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, productsList, handleDeleteProduct, handleEditProduct}}>
             {children}
         </AdminContext.Provider>
     )
