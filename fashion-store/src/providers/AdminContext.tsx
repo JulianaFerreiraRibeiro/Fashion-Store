@@ -13,6 +13,7 @@ export interface IAdminContext{
     setIsModalCreateOpen: React.Dispatch<React.SetStateAction<boolean>>; 
     handleCreateProduct: (formData: ICreateProducts) => Promise<void>;
     productsList: IListProducts[];
+    handleDeleteProduct: (productId: number) => Promise<void>;
 }
 
 export interface IAdminProviderProps {
@@ -100,9 +101,25 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
         handleReadProducts()
     }, [])
 
+    const handleDeleteProduct = async (productId: number) => {
+        const token = localStorage.getItem("@FashionStore:token")
+        try{
+            await api.delete(`/products/${productId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            const deletedProduct = productsList.filter((product) => product.id !== productId)
+            setProductsList(deletedProduct)
+            toast.success("Produto deletado com sucesso")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     return(
-        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, productsList}}>
+        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, productsList, handleDeleteProduct}}>
             {children}
         </AdminContext.Provider>
     )

@@ -1,15 +1,18 @@
-import { IListProducts } from "../../providers/AdminContext"
+import { AdminContext, IListProducts } from "../../providers/AdminContext"
 import { Paragraph } from "../typography"
 import DeleteButton from "../../assets/delete_button.svg"
 import EditButton from "../../assets/edit_button.svg"
 import { StyledAdminProductsCards } from './style';
+import { useContext } from "react";
 
 interface IProductCardProps{
     product: IListProducts
 }
 
 export const ProductCard = ({product}: IProductCardProps) => {
+    const {handleDeleteProduct} = useContext(AdminContext)
     const price = Number(product.price)
+
     return (
         <StyledAdminProductsCards>
             <div className = "productInformation">
@@ -21,7 +24,7 @@ export const ProductCard = ({product}: IProductCardProps) => {
             </div>
             <div className="productController">
                 <img src = {EditButton} alt = "lápis na coloração preta, para editar produtos"/>
-                <img src = {DeleteButton} alt = "lixeira na coloração preta, para excluir produtos"/>
+                <img src = {DeleteButton} alt = "lixeira na coloração preta, para excluir produtos" onClick = {() => handleDeleteProduct(product.id)}/>
             </div>
         </StyledAdminProductsCards>
     )
