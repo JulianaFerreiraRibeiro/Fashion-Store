@@ -3,6 +3,7 @@ import { StyledTitleOne, StyledTitleThree, StyledTitleTwo, SyledParagraph } from
 
 interface ITypographyProps{
     children: ReactNode;
+    className?: string;
 }
 
 export const TitleOne = ({children}: ITypographyProps) => {
@@ -29,9 +30,9 @@ export const TitleThree = ({children}: ITypographyProps) => {
     )
 }
 
-export const Paragraph = ({children}: ITypographyProps) => {
+export const Paragraph = ({children, className}: ITypographyProps) => {
     return (
-        <SyledParagraph>
+        <SyledParagraph className={className}>
             {children}
         </SyledParagraph>
     )

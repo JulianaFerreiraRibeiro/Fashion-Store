@@ -6,7 +6,6 @@ export const StyledDasboardCreateSection = styled.section`
     max-width: 100%;
     gap: 40px;
     padding: 20px 90px;
-    height: 53vh;
 
     .dashboardController{
         display: flex;
@@ -33,5 +32,21 @@ export const StyledDasboardCreateSection = styled.section`
         display: flex;
         flex-direction: column;
         gap: 30px;
+    }
+
+    .dashboardProductsList{
+        overflow: auto;
+        height: 475px;
+        gap: 45px;
+        width: 1420px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .productImage{
+        width: 180px;
+        height: 210px;
+        border-radius: 20px;
     }
 `
