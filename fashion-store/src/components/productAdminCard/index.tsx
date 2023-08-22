@@ -9,13 +9,14 @@ interface IProductCardProps{
 }
 
 export const ProductCard = ({product}: IProductCardProps) => {
+    const price = Number(product.price)
     return (
         <StyledAdminProductsCards>
             <div className = "productInformation">
-                <img src= {product.image} alt = {product.name}/>
+                <img className = "productImage" src= {product.image} alt = {product.name}/>
                 <div className="productDescription">
-                    <Paragraph>{product.name}</Paragraph>
-                    <Paragraph>R$ {product.price.toFixed(2)}</Paragraph>
+                    <Paragraph className = "productName">{product.name}</Paragraph>
+                    <Paragraph className = "productPrice">R$ {price.toFixed(2)}</Paragraph>
                 </div>
             </div>
             <div className="productController">

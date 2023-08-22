@@ -6,8 +6,8 @@ export const StyledModal = styled.div`
     align-items: center;
     justify-content: center;
     background-color: var(--white-tone);
-    width: 100vw;
-    height: 100vh;
+    width: 99vw;
+    height: 140vh;
     z-index: 10;
     top: 0rem;
     left: 0;

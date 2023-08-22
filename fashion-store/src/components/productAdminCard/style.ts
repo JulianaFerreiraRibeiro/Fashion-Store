@@ -24,4 +24,12 @@ export const StyledAdminProductsCards = styled.li`
         align-items: center;
         gap: 20px;
     }
+
+    .productName{
+        font-weight: var(--font-weight-1);
+    }
+
+    .productPrice{
+        font-family: 'Oswald', sans-serif;
+    }
 `
