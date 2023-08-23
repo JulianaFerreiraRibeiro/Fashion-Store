@@ -10,8 +10,9 @@ interface IProductCardProps{
 }
 
 export const ProductCard = ({product}: IProductCardProps) => {
-    const {handleDeleteProduct, setEditIdProduct} = useContext(AdminContext)
+    const {handleDeleteProduct, setEditIdProduct, setIsModalEditOpen} = useContext(AdminContext)
     const price = Number(product.price)
+    const formattedPrice = price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
     return (
         <StyledAdminProductsCards>
@@ -19,11 +20,16 @@ export const ProductCard = ({product}: IProductCardProps) => {
                 <img className = "productImage" src= {product.image} alt = {product.name}/>
                 <div className="productDescription">
                     <Paragraph className = "productName">{product.name}</Paragraph>
-                    <Paragraph className = "productPrice">R$ {price.toFixed(2)}</Paragraph>
+                    <Paragraph className = "productPrice">{formattedPrice}</Paragraph>
                 </div>
             </div>
             <div className="productController">
-                <img src = {EditButton} alt = "lápis na coloração preta, para editar produtos" onClick = {() => setEditIdProduct(product)}/>
+                <img src = {EditButton} alt = "lápis na coloração preta, para editar produtos" onClick = {() => {
+                    setEditIdProduct(product)
+                    setIsModalEditOpen(true)
+                }}
+                    
+                    />
                 <img src = {DeleteButton} alt = "lixeira na coloração preta, para excluir produtos" onClick = {() => handleDeleteProduct(product.id)}/>
             </div>
         </StyledAdminProductsCards>

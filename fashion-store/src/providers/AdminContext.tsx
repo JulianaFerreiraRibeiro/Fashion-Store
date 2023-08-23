@@ -5,6 +5,7 @@ import { toast } from "react-toastify"
 import { IRegisterFormData } from "../components/registerForm";
 import { ILoginFormData } from "../components/loginForm";
 import { ICreateProducts } from "../components/modalDashboardCreate";
+import { IEditProduct } from "../components/modalDashboardEdit";
 
 export interface IAdminContext{
     handleRegister: (formData: IRegisterFormData) => Promise<void>;
@@ -14,9 +15,13 @@ export interface IAdminContext{
     handleCreateProduct: (formData: ICreateProducts) => Promise<void>;
     productsList: IListProducts[];
     handleDeleteProduct: (productId: number) => Promise<void>;
-    handleEditProduct: (productId: number, formData: ICreateProducts) => Promise<void>;
+    handleEditProduct: (productId: number, formData: IEditProduct) => Promise<void>;
     setEditIdProduct: React.Dispatch<React.SetStateAction<IListProducts | null>>;
+    editIdProduct: IListProducts | null;
+    isModalEditOpen: boolean;
+    setIsModalEditOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 
 export interface IAdminProviderProps {
     children: ReactNode;
@@ -36,7 +41,7 @@ export interface IAdminResponse{
 export interface IListProducts {
     id: number;
     name: string;
-    price: number;
+    price: string;
     description: string;
     image: string;
 }
@@ -45,6 +50,7 @@ export const AdminContext = createContext({} as IAdminContext)
 
 export const AdminProvider = ({children}: IAdminProviderProps) => {
     const [isModalCreateOpen, setIsModalCreateOpen] = useState(false)
+    const [isModalEditOpen, setIsModalEditOpen] = useState(false)
     const [productsList, setProductsList] = useState<IListProducts[]>([])
     const [editIdProduct, setEditIdProduct] = useState<IListProducts | null>(null)
 
@@ -120,10 +126,10 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
         }
     }
 
-    const handleEditProduct = async(productId: number, formData: ICreateProducts) => {
+    const handleEditProduct = async(productId: number, formData: IEditProduct) => {
         const token = localStorage.getItem("@FashionStore:token")
         try{
-            await api.patch(`/products/${productId}`, formData, {
+            const {data} = await api.patch(`/products/${productId}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -135,6 +141,7 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
                     return product
                 }
             })
+            console.log(data)
             setProductsList(editedProduct)
             toast.success("Produto editado com sucesso")
         } catch (error) {
@@ -144,7 +151,7 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
 
 
     return(
-        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, productsList, handleDeleteProduct, handleEditProduct}}>
+        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, productsList, handleDeleteProduct, handleEditProduct, setEditIdProduct, editIdProduct, setIsModalEditOpen, isModalEditOpen}}>
             {children}
         </AdminContext.Provider>
     )
