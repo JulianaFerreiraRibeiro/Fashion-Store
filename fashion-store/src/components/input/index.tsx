@@ -8,13 +8,14 @@ interface IInputProps{
     placeholder: string;
     register: UseFormRegisterReturn<string>;
     error?: string;
+    defaultValue?: string;
     inputsize: tInput;
 }
 
-export const Input = ({type, placeholder, register, error, inputsize}: IInputProps) => {
+export const Input = ({type, placeholder, register, error, inputsize, defaultValue}: IInputProps) => {
     return(
         <>
-            <StyledInput type={type} placeholder={placeholder} {...register} inputsize = {inputsize}/>
+            <StyledInput type={type} placeholder={placeholder} {...register} inputsize = {inputsize} defaultValue = {defaultValue}/>
             <Paragraph>{error}</Paragraph>
         </>
     )

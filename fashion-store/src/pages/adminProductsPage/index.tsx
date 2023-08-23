@@ -7,11 +7,12 @@ import { useContext } from "react"
 import { AdminContext } from "../../providers/AdminContext"
 import { ModalDashboardCreate } from "../../components/modalDashboardCreate"
 import { ProductCard } from "../../components/productAdminCard"
+import { ModalDashboardEdit } from "../../components/modalDashboardEdit"
 
 
 
 export const AdminDashboardCreateProductsPage = () => {
-    const {isModalCreateOpen, setIsModalCreateOpen, productsList} = useContext(AdminContext)
+    const {isModalCreateOpen, setIsModalCreateOpen, productsList, isModalEditOpen} = useContext(AdminContext)
 
     return(
         <StyledDasboardCreateSection>
@@ -34,6 +35,10 @@ export const AdminDashboardCreateProductsPage = () => {
                     {productsList.map(product => (
                         <ProductCard product={product} key = {product.id}/>
                     ))}
+
+                {isModalEditOpen?
+                <ModalDashboardEdit/> : null
+            }
                 </ul>
         </StyledDasboardCreateSection>
     )
