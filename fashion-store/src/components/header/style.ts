@@ -6,4 +6,15 @@ export const StyledHeader = styled.header`
     justify-content: center;
     align-items: center;
     height: 100px;
+
+    nav{
+        display: flex;
+        justify-content: space-between;
+        width: 86%;
+    }
+
+    .cart{
+        width: 48px;
+        height: 48px;
+    }
 `

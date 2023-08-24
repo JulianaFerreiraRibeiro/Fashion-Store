@@ -5,11 +5,11 @@ import EditButton from "../../assets/edit_button.svg"
 import { StyledAdminProductsCards } from './style';
 import { useContext } from "react";
 
-interface IProductCardProps{
+export interface IProductCardProps{
     product: IListProducts
 }
 
-export const ProductCard = ({product}: IProductCardProps) => {
+export const ProductAdminCard = ({product}: IProductCardProps) => {
     const {handleDeleteProduct, setEditIdProduct, setIsModalEditOpen} = useContext(AdminContext)
     const price = Number(product.price)
     const formattedPrice = price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });

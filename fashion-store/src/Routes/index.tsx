@@ -3,6 +3,7 @@ import { AdminDashboardPage } from '../pages/adminDashboardHomePage';
 import { LoginPage } from '../pages/loginPage';
 import { RegisterPage } from '../pages/registerPage/index';
 import { Route, Routes } from 'react-router-dom';
+import { UserDashboardPage } from '../pages/userDashboardPage';
 
 export const RoutesMain = () => {
    return(
@@ -12,6 +13,7 @@ export const RoutesMain = () => {
                 <Route path = "/login" element = {<LoginPage/>} /> 
                 <Route path = "/dashboard" element={<AdminDashboardPage/>}/>
                 <Route path = "/dashboard/products" element={<AdminDashboardCreateProductsPage/>}/>
+                <Route path = "/" element = {<UserDashboardPage/>}/>
         </Routes>
     </>
    )
