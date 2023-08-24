@@ -29,5 +29,6 @@ export const StyledUserProductCard = styled.li`
         font-size: 14px;
         letter-spacing: .125rem;
         font-weight: var(--font-weight-2);
+        cursor: pointer;
     }
 `

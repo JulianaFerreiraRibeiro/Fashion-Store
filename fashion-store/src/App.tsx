@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AdminProvider } from './providers/AdminContext';
 import { Footer } from './components/footer';
+import { UserProvider } from './providers/UserContext';
 
 
 function App() {
@@ -12,8 +13,10 @@ function App() {
     <>
       <GlobalStyle/>
       <AdminProvider>
-        <ToastContainer/>
-        <RoutesMain/>
+        <UserProvider>
+          <ToastContainer/>
+          <RoutesMain/>
+        </UserProvider>
       </AdminProvider>
       <Footer/>
     </>
