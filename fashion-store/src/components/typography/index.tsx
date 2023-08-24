@@ -4,6 +4,7 @@ import { StyledTitleFour, StyledTitleOne, StyledTitleThree, StyledTitleTwo, Syle
 interface ITypographyProps{
     children: ReactNode;
     className?: string;
+    onClick?: any
 }
 
 export const TitleOne = ({children}: ITypographyProps) => {
@@ -38,9 +39,9 @@ export const TitleFour = ({children}: ITypographyProps) => {
     )
 }
 
-export const Paragraph = ({children, className}: ITypographyProps) => {
+export const Paragraph = ({children, className, onClick}: ITypographyProps) => {
     return (
-        <SyledParagraph className={className}>
+        <SyledParagraph className={className} onClick={onClick}>
             {children}
         </SyledParagraph>
     )
