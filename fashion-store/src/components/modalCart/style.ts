@@ -26,6 +26,7 @@ export const StyledDivModal = styled.div`
     margin-right: 20px;
     height: 987px;
     gap: 30px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `
 
 export const StyledHeaderModal = styled.header`
@@ -48,4 +49,17 @@ export const StyledHeaderModal = styled.header`
 export const StyledProductList = styled.ul`
     display: flex;
     flex-direction: column;
+    height: 110vh;
+`
+
+export const StyledProductTotal = styled.section`
+    p{
+        font-family: 'Oswald', sans-serif;
+        letter-spacing: 1px; 
+
+        span{
+            font-weight: var(--font-weight-1);
+            letter-spacing: 0px;
+        }
+    }
 `

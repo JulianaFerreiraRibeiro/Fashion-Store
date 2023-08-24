@@ -33,6 +33,7 @@ export const UserProvider = ({children}: IUserProviderProps) => {
         toast.success("Produto removido com sucesso")
     }
 
+
     return(
         <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart, removeProductFromCart}}>
             {children}
