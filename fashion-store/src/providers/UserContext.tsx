@@ -12,6 +12,7 @@ export interface IUserContextProps{
     isCartModalOpen: boolean;
     setIsCartModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
     addProductToCart: (product: IListProducts) => void;
+    removeProductFromCart: (productId: number) => void;
 }
 
 export const UserContext = createContext({} as IUserContextProps)
@@ -26,8 +27,14 @@ export const UserProvider = ({children}: IUserProviderProps) => {
         console.log(cartList)
     }
 
+    const removeProductFromCart = (productId: number) => {
+        const removedProduct = cartList.filter((product) => product.id !== productId)
+        setCartList(removedProduct)
+        toast.success("Produto removido com sucesso")
+    }
+
     return(
-        <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart}}>
+        <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart, removeProductFromCart}}>
             {children}
         </UserContext.Provider>
     )
