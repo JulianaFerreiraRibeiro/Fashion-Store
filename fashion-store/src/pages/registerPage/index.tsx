@@ -4,11 +4,13 @@ import BannerRegister from "../../assets/banner_register.svg"
 import { StyledRegisterSection } from "./style"
 import { Link } from "react-router-dom"
 import Arrow from "../../assets/arrow.svg"
+import { Header } from "../../components/header"
 
 
 export const RegisterPage = () => {
     return(
         <>
+            <Header/>
             <StyledRegisterSection>
                 <img src={BannerRegister} className="banner" alt = "banner da página de registro, duas garotas posando para a foto com roupas claras"/>
                 <div className = "registerContainer">

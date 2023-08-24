@@ -45,8 +45,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Roboto', sans-serif;
         font-size: var(--font-size-5);
         font-weight: var(--font-weight-2);
-        letter-spacing: .125rem;
-        
+        letter-spacing: .125rem; 
     }
 
 
@@ -81,6 +80,10 @@ export const GlobalStyle = createGlobalStyle`
 
     li{
         list-style: none;
+    }
+    
+    img{
+        cursor: pointer;
     }
 
 `
