@@ -1,5 +1,5 @@
-import { ReactNode, createContext, useState } from "react";
-import { IListProducts } from "./AdminContext";
+import { ReactNode, createContext, useEffect, useState } from "react";
+import {IListProducts } from "./AdminContext";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +17,8 @@ export interface IUserContextProps{
     removeProductFromCart: (productId: number) => void;
     getProductById: (productId: number) => Promise<void>;
     product: IListProducts | undefined;
+    renderProducts: (productId: number) => Promise<void>;
+    userProductsList: IListProducts[];
 }
 
 export const UserContext = createContext({} as IUserContextProps)
@@ -25,6 +27,7 @@ export const UserProvider = ({children}: IUserProviderProps) => {
     const [cartList, setCartList] = useState<IListProducts[]>([])
     const [isCartModalOpen, setIsCartModalOpen] = useState(false)
     const [product, setProduct] = useState<IListProducts | undefined>()
+    const [userProductsList, setUserProductsList] = useState<IListProducts[]>([])
 
     const navigate = useNavigate()
 
@@ -53,8 +56,25 @@ export const UserProvider = ({children}: IUserProviderProps) => {
         }
     }
 
+    useEffect(() => {
+        const handleReadProducts = async () => {
+            try{
+                const {data} = await api.get("/products")
+                setUserProductsList(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        handleReadProducts()
+    }, [])
+
+    const renderProducts = async (productId: number) => {
+        const filteredProducts = userProductsList.filter((product) => product.id !== productId)
+        setUserProductsList(filteredProducts)
+    }
+
     return(
-        <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart, removeProductFromCart, getProductById, product}}>
+        <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart, removeProductFromCart, getProductById, product, renderProducts, userProductsList}}>
             {children}
         </UserContext.Provider>
     )

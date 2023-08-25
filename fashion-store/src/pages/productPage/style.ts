@@ -6,7 +6,6 @@ export const StyledProductPageSection = styled.section`
     gap: 90px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
     .productSection{
@@ -15,7 +14,7 @@ export const StyledProductPageSection = styled.section`
         align-items: center;
         justify-content: space-around;
 
-        img{
+        .productImage{
             width: 580px;
             height: 669px;
             border-radius: 20px;
@@ -40,6 +39,19 @@ export const StyledProductPageSection = styled.section`
         .productDescription{
             width: 568px;
             line-height: 32px;
+        }
+    }
+    
+    .productsSection{
+        align-self: flex-start;
+        
+        h2{
+            margin-bottom: 50px;
+        }
+
+        ul{
+            display: flex;
+            gap: 40px;
         }
     }
 `

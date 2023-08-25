@@ -9,7 +9,7 @@ import { ProductUserCard } from "../../components/productUserCard"
 
 
 export const UserDashboardPage = () => {
-    const {productsList} = useContext(AdminContext)
+    const {adminProductsList} = useContext(AdminContext)
 
     return (
         <>
@@ -25,7 +25,7 @@ export const UserDashboardPage = () => {
                     <section>
                         <TitleTwo>PRODUTOS EM DESTAQUE</TitleTwo>
                         <ul>
-                            {productsList.map(product => (
+                            {adminProductsList.map(product => (
                                 <ProductUserCard product={product} key = {product.id}/>
                             ))}
                         </ul>

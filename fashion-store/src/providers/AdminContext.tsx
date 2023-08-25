@@ -13,7 +13,7 @@ export interface IAdminContext{
     isModalCreateOpen: boolean;
     setIsModalCreateOpen: React.Dispatch<React.SetStateAction<boolean>>; 
     handleCreateProduct: (formData: ICreateProducts) => Promise<void>;
-    productsList: IListProducts[];
+    adminProductsList: IListProducts[];
     handleDeleteProduct: (productId: number) => Promise<void>;
     handleEditProduct: (productId: number, formData: IEditProduct) => Promise<void>;
     setEditIdProduct: React.Dispatch<React.SetStateAction<IListProducts | null>>;
@@ -51,7 +51,7 @@ export const AdminContext = createContext({} as IAdminContext)
 export const AdminProvider = ({children}: IAdminProviderProps) => {
     const [isModalCreateOpen, setIsModalCreateOpen] = useState(false)
     const [isModalEditOpen, setIsModalEditOpen] = useState(false)
-    const [productsList, setProductsList] = useState<IListProducts[]>([])
+    const [adminProductsList, setAdminProductsList] = useState<IListProducts[]>([])
     const [editIdProduct, setEditIdProduct] = useState<IListProducts | null>(null)
 
     const navigate = useNavigate()
@@ -89,7 +89,7 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            setProductsList([...productsList, data])
+            setAdminProductsList([...adminProductsList, data])
             console.log(data)
             toast.success("Produto criado com sucesso")
         } catch (error) {
@@ -102,7 +102,7 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
         const handleReadProducts = async () => {
             try{
                 const {data} = await api.get("/products")
-                setProductsList(data)
+                setAdminProductsList(data)
             } catch (error) {
                 console.log(error)
             }
@@ -118,8 +118,8 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            const deletedProduct = productsList.filter((product) => product.id !== productId)
-            setProductsList(deletedProduct)
+            const deletedProduct = adminProductsList.filter((product) => product.id !== productId)
+            setAdminProductsList(deletedProduct)
             toast.success("Produto deletado com sucesso")
         } catch (error) {
             console.log(error)
@@ -134,7 +134,7 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
                     Authorization: `Bearer ${token}`
                 }
             }) 
-            const editedProduct = productsList.map((product) => {
+            const editedProduct = adminProductsList.map((product) => {
                 if(productId === product.id){
                     return {...product, ...formData}
                 } else {
@@ -142,7 +142,7 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
                 }
             })
             console.log(data)
-            setProductsList(editedProduct)
+            setAdminProductsList(editedProduct)
             toast.success("Produto editado com sucesso")
         } catch (error) {
             console.log(error)
@@ -151,7 +151,7 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
 
 
     return(
-        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, productsList, handleDeleteProduct, handleEditProduct, setEditIdProduct, editIdProduct, setIsModalEditOpen, isModalEditOpen}}>
+        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, adminProductsList, handleDeleteProduct, handleEditProduct, setEditIdProduct, editIdProduct, setIsModalEditOpen, isModalEditOpen}}>
             {children}
         </AdminContext.Provider>
     )
