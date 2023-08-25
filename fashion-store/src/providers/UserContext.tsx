@@ -16,7 +16,7 @@ export interface IUserContextProps{
     addProductToCart: (product: IListProducts) => void;
     removeProductFromCart: (productId: number) => void;
     getProductById: (productId: number) => Promise<void>;
-    product: IListProducts | null;
+    product: IListProducts | undefined;
 }
 
 export const UserContext = createContext({} as IUserContextProps)
@@ -24,14 +24,16 @@ export const UserContext = createContext({} as IUserContextProps)
 export const UserProvider = ({children}: IUserProviderProps) => {
     const [cartList, setCartList] = useState<IListProducts[]>([])
     const [isCartModalOpen, setIsCartModalOpen] = useState(false)
-    const [product, setProduct] = useState<IListProducts | null>(null)
+    const [product, setProduct] = useState<IListProducts | undefined>()
 
     const navigate = useNavigate()
 
-    const addProductToCart = (product: IListProducts) => {
-        setCartList([...cartList, product])
-        toast.success("Produto adicionado com sucesso")
-        console.log(cartList)
+    const addProductToCart = (product: IListProducts | undefined) => {
+        if(product){
+            setCartList([...cartList, product])
+            toast.success("Produto adicionado com sucesso")
+            console.log(cartList)
+        }
     }
 
     const removeProductFromCart = (productId: number) => {
