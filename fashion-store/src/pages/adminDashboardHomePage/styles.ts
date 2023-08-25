@@ -18,7 +18,4 @@ export const StyledDashboardSection = styled.section`
             font-size: var(--font-size-4);
         }
     }
-    h2{
-        font-weight: var(--font-weight-1);
-    }
 `

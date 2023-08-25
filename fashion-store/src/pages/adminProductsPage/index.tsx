@@ -13,7 +13,7 @@ import { Header } from "../../components/header"
 
 
 export const AdminDashboardCreateProductsPage = () => {
-    const {isModalCreateOpen, setIsModalCreateOpen, productsList, isModalEditOpen} = useContext(AdminContext)
+    const {isModalCreateOpen, setIsModalCreateOpen, adminProductsList, isModalEditOpen} = useContext(AdminContext)
 
     return(
         <>
@@ -35,7 +35,7 @@ export const AdminDashboardCreateProductsPage = () => {
                         <ModalDashboardCreate/> : null
                     }
                     <ul className = "dashboardProductsList">
-                        {productsList.map(product => (
+                        {adminProductsList.map(product => (
                             <ProductAdminCard product={product} key = {product.id}/>
                         ))}
 

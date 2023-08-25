@@ -18,10 +18,6 @@ export const StyledDasboardCreateSection = styled.section`
         }
     }
 
-    h2{
-        font-weight: var(--font-weight-1);
-    }
-
     .dashboardCreateSection{
         display: flex;
         align-items: center;

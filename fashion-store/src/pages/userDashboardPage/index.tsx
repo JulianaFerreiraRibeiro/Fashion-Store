@@ -6,12 +6,10 @@ import { StyledDasboardUserSection } from "./style"
 import { AdminContext } from "../../providers/AdminContext"
 import { Header } from "../../components/header"
 import { ProductUserCard } from "../../components/productUserCard"
-import { UserContext } from "../../providers/UserContext"
-import { ModalCart } from "../../components/modalCart"
+
 
 export const UserDashboardPage = () => {
-    const {productsList} = useContext(AdminContext)
-    const {isCartModalOpen} = useContext(UserContext)
+    const {adminProductsList} = useContext(AdminContext)
 
     return (
         <>
@@ -24,11 +22,10 @@ export const UserDashboardPage = () => {
                             <StyledButton buttoncolor="black" buttonsize="big">CONFIRA AS OFERTAS</StyledButton>
                         </div>
                     </div>
-                    {isCartModalOpen ? <ModalCart/> : null}
                     <section>
                         <TitleTwo>PRODUTOS EM DESTAQUE</TitleTwo>
                         <ul>
-                            {productsList.map(product => (
+                            {adminProductsList.map(product => (
                                 <ProductUserCard product={product} key = {product.id}/>
                             ))}
                         </ul>

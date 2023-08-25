@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     buttoncolor: "black" | "white";
-    buttonsize: "small" | "medium" | "big";
+    buttonsize: "small" | "medium" | "big" | "biggest";
   }
 
 export const StyledButton = styled.button<ButtonProps>`
@@ -41,6 +41,10 @@ ${({buttoncolor}) => {
                 case "big":
                     return css`
                         width: 282px;
+                    `
+                case "biggest":
+                    return css`
+                        width: 356px;
                     `
             }
         }}
