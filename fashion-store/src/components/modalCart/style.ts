@@ -50,6 +50,7 @@ export const StyledProductList = styled.ul`
     display: flex;
     flex-direction: column;
     height: 110vh;
+    gap: 40px;
 `
 
 export const StyledProductTotal = styled.section`

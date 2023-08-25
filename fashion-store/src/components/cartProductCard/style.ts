@@ -25,4 +25,12 @@ export const StyledProductCartList = styled.li`
         width: 420px;
         margin-right: 50px;
     }
+
+    p{
+        font-family: 'Oswald', sans-serif;
+    }
+
+    h4{
+        font-family: 'Roboto', sans-serif;
+    }
 `

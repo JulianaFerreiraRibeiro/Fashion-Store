@@ -16,12 +16,12 @@ export const StyledTitleThree = styled.h3`
 `
 
 export const StyledTitleFour = styled.h4`
-    font-size: var(--font-size-5);
+    font-size: var(--font-size-4);
     font-weight: var(--font-weight-1);
 `
 
 export const SyledParagraph = styled.p`
     font-family: 'Roboto', sans-serif;
     font-weight: var(--font-weight-3);
-    font-size: var(--font-size-4);
+    font-size: var(--font-size-5);
 `
