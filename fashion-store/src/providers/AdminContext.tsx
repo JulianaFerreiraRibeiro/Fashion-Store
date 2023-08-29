@@ -20,6 +20,7 @@ export interface IAdminContext{
     editIdProduct: IListProducts | null;
     isModalEditOpen: boolean;
     setIsModalEditOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    userLogout: () => void;
 }
 
 
@@ -149,9 +150,15 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
         }
     }
 
+    const userLogout = () => {
+        localStorage.removeItem("@FashionStore:token")
+        toast.success("Logout realizado com sucesso!")
+        navigate("/")
+    }
+
 
     return(
-        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, adminProductsList, handleDeleteProduct, handleEditProduct, setEditIdProduct, editIdProduct, setIsModalEditOpen, isModalEditOpen}}>
+        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, adminProductsList, handleDeleteProduct, handleEditProduct, setEditIdProduct, editIdProduct, setIsModalEditOpen, isModalEditOpen, userLogout}}>
             {children}
         </AdminContext.Provider>
     )

@@ -15,8 +15,10 @@ export const RegisterPage = () => {
                 <img src={BannerRegister} className="banner" alt = "banner da página de registro, duas garotas posando para a foto com roupas claras"/>
                 <div className = "registerContainer">
                     <div className = "backToLoginSection">
-                        <img src = {Arrow} className="arrow" alt = "seta preta voltada para a esquerda, retorna para a página de login"/>
-                        <Link to = "/login">VOLTAR</Link>
+                        <Link to = "/login">
+                            <img src = {Arrow} className="arrow" alt = "seta preta voltada para a esquerda, retorna para a página de login"/>
+                            VOLTAR
+                        </Link>
                     </div>
                     <TitleTwo>CADASTRAR-SE</TitleTwo>
                     <Paragraph>Seja bem vindo, administrador!</Paragraph>

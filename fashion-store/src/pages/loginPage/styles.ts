@@ -11,9 +11,20 @@ export const StyledLoginSection = styled.section`
         display: flex;
         flex-direction: column;
         gap: 20px;
+        position: relative;
+
+        .backToHomeSection{
+            position: absolute;
+            bottom: 470px;
+
+            a{
+                letter-spacing: .125rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        }
     }
 
-    h2{
-        font-weight: var(--font-weight-1);
-    }
+    
 `

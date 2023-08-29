@@ -17,7 +17,7 @@ export const AdminDashboardCreateProductsPage = () => {
 
     return(
         <>
-            <Header/>
+            <Header logout = {true}/>
             <StyledDasboardCreateSection>
                 <div className="dashboardController">
                     <Link to = "/dashboard">INÍCIO</Link>

@@ -9,12 +9,19 @@ export const StyledHeader = styled.header`
 
     nav{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
+        gap: 350px;
+        align-items: center;
         width: 86%;
     }
 
     .cart{
         width: 48px;
         height: 48px;
+    }
+
+    .buttonsSection{
+        display: flex;
+        gap: 30px;
     }
 `

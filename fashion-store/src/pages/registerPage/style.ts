@@ -16,18 +16,12 @@ export const StyledRegisterSection = styled.section`
         height: 24px;
     }
 
-    .backToLoginSection{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
 
     a{
+        display: flex;
+        align-items: center;
         letter-spacing: .125rem;
-    }
-
-    h2{
-        font-weight: var(--font-weight-1);
+        gap: 10px;
     }
     
     .registerContainer{

@@ -26,8 +26,8 @@ export const LoginForm = () => {
 
     return(
         <StyledLoginForm onSubmit={handleSubmit(submit)}>
-            <Input type = "email" placeholder = "EMAIL" error = {errors.email?.message} register={register("email")}/>
-            <Input type = "password" placeholder = "SENHA" error = {errors.password?.message} register={register("password")}/>
+            <Input type = "email" placeholder = "EMAIL" error = {errors.email?.message} register={register("email")} inputsize="medium"/>
+            <Input type = "password" placeholder = "SENHA" error = {errors.password?.message} register={register("password")} inputsize="medium"/>
             <div className = "buttonsSection">
                <StyledButton buttoncolor = "black" buttonsize = "small">ACESSAR</StyledButton>
                <Link to = "/register">

@@ -73,6 +73,8 @@ export const UserProvider = ({children}: IUserProviderProps) => {
         setUserProductsList(filteredProducts)
     }
 
+
+
     return(
         <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart, removeProductFromCart, getProductById, product, renderProducts, userProductsList}}>
             {children}
