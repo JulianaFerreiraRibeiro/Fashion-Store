@@ -86,4 +86,31 @@ export const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     }
 
+    body::-webkit-scrollbar {
+        width: 12px;             
+    }
+
+    body::-webkit-scrollbar-track {
+        background: var(--color-white);       
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: var(--color-black);   
+        border-radius: 20px; 
+    }
+
+   ul::-webkit-scrollbar {
+        width: 12px;             
+    }
+
+   ul::-webkit-scrollbar-track {
+        background: var(--color-gray);  
+
+    }
+
+   ul::-webkit-scrollbar-thumb {
+        background-color: var(--color-black);   
+        border-radius: 20px; 
+
+    }
 `

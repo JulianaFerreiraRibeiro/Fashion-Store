@@ -6,7 +6,7 @@ import { Header } from "../../components/header"
 export const AdminDashboardPage = () => {
     return(
         <>
-            <Header/>
+            <Header logout = {true}/>
             <StyledDashboardSection>
                 <div>
                     <Link to = "/dashboard">INÍCIO</Link>

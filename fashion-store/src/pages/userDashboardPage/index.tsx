@@ -13,7 +13,7 @@ export const UserDashboardPage = () => {
 
     return (
         <>
-            <Header cart = {true}/>
+            <Header cart = {true} button = {true}/>
             <StyledDasboardUserSection>
                     <div className="storeLogo">
                     <img src = {UserBanner}/>
