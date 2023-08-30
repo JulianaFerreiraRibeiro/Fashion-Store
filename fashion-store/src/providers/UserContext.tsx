@@ -24,7 +24,9 @@ export interface IUserContextProps{
 export const UserContext = createContext({} as IUserContextProps)
 
 export const UserProvider = ({children}: IUserProviderProps) => {
-    const [cartList, setCartList] = useState<IListProducts[]>([])
+    const cartListStorage: IListProducts[] = JSON.parse(localStorage.getItem("@FashionStore:cartlist") || '[]');
+
+    const [cartList, setCartList] = useState<IListProducts[]>(cartListStorage?.length > 0 ? cartListStorage : [])
     const [isCartModalOpen, setIsCartModalOpen] = useState(false)
     const [product, setProduct] = useState<IListProducts | undefined>()
     const [userProductsList, setUserProductsList] = useState<IListProducts[]>([])
@@ -36,13 +38,15 @@ export const UserProvider = ({children}: IUserProviderProps) => {
             setCartList([...cartList, product])
             toast.success("Produto adicionado com sucesso")
             console.log(cartList)
+            localStorage.setItem("@FashionStore:cartlist", JSON.stringify(cartList))
         }
     }
 
-    const removeProductFromCart = (productId: number) => {
+     const removeProductFromCart = (productId: number) => {
         const removedProduct = cartList.filter((product) => product.id !== productId)
         setCartList(removedProduct)
         toast.success("Produto removido com sucesso")
+        localStorage.setItem("@FashionStore:cartlist", JSON.stringify(removedProduct));
     }
 
     const getProductById = async (productId: number) => {
