@@ -5,6 +5,8 @@ import { RegisterPage } from '../pages/registerPage/index';
 import { Route, Routes } from 'react-router-dom';
 import { UserDashboardPage } from '../pages/userDashboardPage';
 import { ProductPage } from '../pages/productPage';
+import { AdminProvider } from '../providers/AdminContext';
+import { ProtectedPages } from './ProtectedRoutes';
 
 export const RoutesMain = () => {
    return(
@@ -12,10 +14,17 @@ export const RoutesMain = () => {
         <Routes>
                 <Route path="/register" element={<RegisterPage/>}/>
                 <Route path = "/login" element = {<LoginPage/>} /> 
-                <Route path = "/dashboard" element={<AdminDashboardPage/>}/>
-                <Route path = "/dashboard/products" element={<AdminDashboardCreateProductsPage/>}/>
                 <Route path = "/" element = {<UserDashboardPage/>}/>
                 <Route path="/product" element = {<ProductPage/>}/>
+                <Route path = "/dashboard" element={ 
+                    <AdminProvider>
+                        <ProtectedPages/>
+                    </AdminProvider>
+                
+                }>
+                    <Route index element = {<AdminDashboardPage/>}/>
+                    <Route path = "/dashboard/products" element ={<AdminDashboardCreateProductsPage/>}/>
+                </Route>
         </Routes>
     </>
    )

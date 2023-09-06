@@ -6,11 +6,11 @@ import { StyledDasboardUserSection } from "./style"
 import { AdminContext } from "../../providers/AdminContext"
 import { Header } from "../../components/header"
 import { ProductUserCard } from "../../components/productUserCard"
+import { UserContext } from "../../providers/UserContext"
 
 
 export const UserDashboardPage = () => {
-    const {adminProductsList} = useContext(AdminContext)
-
+    const {productsList} = useContext(UserContext)
     return (
         <>
             <Header cart = {true} button = {true}/>
@@ -25,7 +25,7 @@ export const UserDashboardPage = () => {
                     <section>
                         <TitleTwo>PRODUTOS EM DESTAQUE</TitleTwo>
                         <ul>
-                            {adminProductsList.map(product => (
+                            {productsList.map(product => (
                                 <ProductUserCard product={product} key = {product.id}/>
                             ))}
                         </ul>

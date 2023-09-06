@@ -2,14 +2,10 @@ import { ReactNode, createContext, useEffect, useState } from "react"
 import { api } from "../services/api"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
-import { IRegisterFormData } from "../components/registerForm";
-import { ILoginFormData } from "../components/loginForm";
 import { ICreateProducts } from "../components/modalDashboardCreate";
 import { IEditProduct } from "../components/modalDashboardEdit";
 
 export interface IAdminContext{
-    handleRegister: (formData: IRegisterFormData) => Promise<void>;
-    handleLogin: (formData: ILoginFormData) => Promise<void>;
     isModalCreateOpen: boolean;
     setIsModalCreateOpen: React.Dispatch<React.SetStateAction<boolean>>; 
     handleCreateProduct: (formData: ICreateProducts) => Promise<void>;
@@ -34,10 +30,6 @@ export interface IAdmin{
     id: number;
 }
 
-export interface IAdminResponse{
-    accessToken: string;
-    user: IAdmin;
-}
 
 export interface IListProducts {
     id: number;
@@ -57,31 +49,6 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
 
     const navigate = useNavigate()
     
-    const handleRegister = async (formData: IRegisterFormData) => {
-        try{
-            const {data} = await api.post<IAdminResponse>("/users", formData)
-            console.log(data)
-            toast.success("Cadastro realizado com sucesso")
-            navigate("/login")
-        } catch (error) {
-            console.log(error)
-            toast.error("Cadastro não realizado")
-        }
-    }
-
-    const handleLogin = async (formData: ILoginFormData) => {
-        try{
-            const {data} = await api.post<IAdminResponse>("/login", formData)
-            console.log(data)
-            localStorage.setItem("@FashionStore:token", data.accessToken)
-            toast.success("Login realizado com sucesso")
-            navigate("/dashboard")
-        } catch (error) {
-            console.log(error)
-            toast.error("Login não realizado")
-        }
-    }
-
     const handleCreateProduct = async(formData: ICreateProducts) => {
         const token = localStorage.getItem("@FashionStore:token")
         try{
@@ -158,7 +125,7 @@ export const AdminProvider = ({children}: IAdminProviderProps) => {
 
 
     return(
-        <AdminContext.Provider value = {{handleRegister, handleLogin, isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, adminProductsList, handleDeleteProduct, handleEditProduct, setEditIdProduct, editIdProduct, setIsModalEditOpen, isModalEditOpen, userLogout}}>
+        <AdminContext.Provider value = {{isModalCreateOpen, setIsModalCreateOpen, handleCreateProduct, adminProductsList, handleDeleteProduct, handleEditProduct, setEditIdProduct, editIdProduct, setIsModalEditOpen, isModalEditOpen, userLogout}}>
             {children}
         </AdminContext.Provider>
     )

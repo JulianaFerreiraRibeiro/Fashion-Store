@@ -19,6 +19,7 @@ export interface IUserContextProps{
     product: IListProducts | undefined;
     renderProducts: (productId: number) => Promise<void>;
     userProductsList: IListProducts[];
+    productsList: IListProducts[];
 }
 
 export const UserContext = createContext({} as IUserContextProps)
@@ -31,6 +32,7 @@ export const UserProvider = ({children}: IUserProviderProps) => {
     const [isCartModalOpen, setIsCartModalOpen] = useState(false)
     const [product, setProduct] = useState<IListProducts | undefined>(undefined)
     const [userProductsList, setUserProductsList] = useState<IListProducts[]>([])
+    const [productsList, setProductsList] = useState<IListProducts[]>([])
 
     
     useEffect(() => {
@@ -40,6 +42,19 @@ export const UserProvider = ({children}: IUserProviderProps) => {
             setProduct(parsedProduct);
         }
     }, []);
+
+    useEffect(() => {
+        const handleReadProducts = async () => {
+            try{
+                const {data} = await api.get("/products")
+                setUserProductsList(data)
+                setProductsList(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        handleReadProducts()
+    }, [])
 
 
     const navigate = useNavigate()
@@ -92,7 +107,7 @@ export const UserProvider = ({children}: IUserProviderProps) => {
 
 
     return(
-        <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart, removeProductFromCart, getProductById, product, renderProducts, userProductsList}}>
+        <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart, removeProductFromCart, getProductById, product, renderProducts, userProductsList, productsList}}>
             {children}
         </UserContext.Provider>
     )
