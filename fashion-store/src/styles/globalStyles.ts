@@ -31,8 +31,10 @@ export const GlobalStyle = createGlobalStyle`
     textarea{
         resize: none;
     }
-    html{
+
+    html, body{
         font-family: 'Oswald', sans-serif;
+        overflow-x: hidden;
     }
 
 

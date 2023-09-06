@@ -26,10 +26,11 @@ export const UserContext = createContext({} as IUserContextProps)
 export const UserProvider = ({children}: IUserProviderProps) => {
 
     const cartListStorage: IListProducts[] = JSON.parse(localStorage.getItem("@FashionStore:cartlist") || '[]');
-    
+
     const [cartList, setCartList] = useState<IListProducts[]>(cartListStorage.length > 0 ? cartListStorage : [])
     const [isCartModalOpen, setIsCartModalOpen] = useState(false)
     const [product, setProduct] = useState<IListProducts | undefined>(undefined)
+    const [userProductsList, setUserProductsList] = useState<IListProducts[]>([])
 
     
     useEffect(() => {
@@ -40,7 +41,6 @@ export const UserProvider = ({children}: IUserProviderProps) => {
         }
     }, []);
 
-    const [userProductsList, setUserProductsList] = useState<IListProducts[]>([])
 
     const navigate = useNavigate()
 

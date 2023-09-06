@@ -32,7 +32,7 @@ export const Header = ({cart, button, logout}: any) => {
             }    
                 {cart ? <img className="cart" src = {HeaderCart} onClick = {() => setIsCartModalOpen(true)}/> : null}
 
-                {logout ? <StyledButton buttoncolor = "black" buttonsize = "small" onClick = {() => userLogout()}>Sair</StyledButton>: null}
+                {logout ? <StyledButton buttoncolor = "black" buttonsize = "small" onClick = {() => userLogout()}>SAIR</StyledButton>: null}
 
                 {isCartModalOpen ? <ModalCart/> : null}
             </nav>
