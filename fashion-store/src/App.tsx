@@ -1,23 +1,22 @@
-
 import { GlobalStyle } from './styles/globalStyles';
 import { RoutesMain } from './Routes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AdminProvider } from './providers/AdminContext';
 import { Footer } from './components/footer';
 import { UserProvider } from './providers/UserContext';
+import { SessionProvider } from './providers/SessionContext';
 
 
 function App() {
   return (
     <>
       <GlobalStyle/>
-      <AdminProvider>
+      <SessionProvider>
         <UserProvider>
           <ToastContainer/>
           <RoutesMain/>
         </UserProvider>
-      </AdminProvider>
+      </SessionProvider>
       <Footer/>
     </>
   )

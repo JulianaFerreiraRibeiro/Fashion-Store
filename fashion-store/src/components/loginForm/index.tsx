@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form"
 import { Input } from "../input"
 import { useContext } from "react";
-import { AdminContext } from "../../providers/AdminContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ILoginFormValues, schema } from "./loginSchema";
 import { StyledLoginForm } from "./styles";
 import { StyledButton } from './../../styles/button';
 import { Link } from "react-router-dom";
+import { SessionContext } from "../../providers/SessionContext";
 
 export interface ILoginFormData{
     email: string;
@@ -17,7 +17,7 @@ export const LoginForm = () => {
     const {handleSubmit, register, reset, formState: {errors}} = useForm<ILoginFormValues>({
         resolver: zodResolver(schema)
     })
-    const {handleLogin} = useContext(AdminContext)
+    const {handleLogin} = useContext(SessionContext)
 
     const submit = async (formData: ILoginFormData) => {
         await handleLogin(formData)

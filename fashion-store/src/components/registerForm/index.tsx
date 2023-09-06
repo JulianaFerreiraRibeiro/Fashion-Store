@@ -1,11 +1,11 @@
 import { useContext } from "react"
 import { Input } from "../input"
 import { StyledRegisterForm } from "./style"
-import { AdminContext } from "../../providers/AdminContext"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { IRegisterFormValues, schema } from "./registerSchema"
 import { StyledButton } from "../../styles/button"
+import { SessionContext } from "../../providers/SessionContext"
 
 export interface IRegisterFormData{
     name: string;
@@ -15,7 +15,7 @@ export interface IRegisterFormData{
 }
 
 export const RegisterForm = () => {
-    const {handleRegister} = useContext(AdminContext)
+    const {handleRegister} = useContext(SessionContext)
 
     const {register, handleSubmit, reset, formState: {errors}} = useForm<IRegisterFormValues>({
         resolver: zodResolver(schema)
