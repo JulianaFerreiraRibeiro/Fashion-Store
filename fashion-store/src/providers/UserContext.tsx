@@ -20,8 +20,6 @@ export interface IUserContextProps{
     renderProducts: (productId: number) => Promise<void>;
     userProductsList: IListProducts[];
     productsList: IListProducts[];
-    productCounter: number;
-    setProductCounter: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const UserContext = createContext({} as IUserContextProps)
@@ -35,7 +33,6 @@ export const UserProvider = ({children}: IUserProviderProps) => {
     const [product, setProduct] = useState<IListProducts | undefined>(undefined)
     const [userProductsList, setUserProductsList] = useState<IListProducts[]>([])
     const [productsList, setProductsList] = useState<IListProducts[]>([])
-    const [productCounter, setProductCounter] = useState(0)
 
     
     useEffect(() => {
@@ -114,7 +111,7 @@ export const UserProvider = ({children}: IUserProviderProps) => {
 
 
     return(
-        <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart, removeProductFromCart, getProductById, product, renderProducts, userProductsList, productsList, productCounter, setProductCounter}}>
+        <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart, removeProductFromCart, getProductById, product, renderProducts, userProductsList, productsList}}>
             {children}
         </UserContext.Provider>
     )
