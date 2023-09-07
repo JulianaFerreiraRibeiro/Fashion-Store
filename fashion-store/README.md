@@ -15,3 +15,6 @@ Foi feita a proteção de rotas para que o usuário que não esteja logado não 
 
 <h2>Link da aplicação no Vercel:</h2>
 <p>Observação: é possível que a API demore para rodar após tempo sem uso, para fim de teste, tente cadastrar sua empresa até que a mensagem de "cadastro realizado com sucesso" apareça em tela. Após isso, poderá testar as demais funcionalidades.</p>
+
+<a href = "https://fashions-store.vercel.app/"> 
+<h3>Fashion Store Link </h3>
