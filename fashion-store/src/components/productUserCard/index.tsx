@@ -8,16 +8,19 @@ import { UserContext } from "../../providers/UserContext";
 export const ProductUserCard = ({product}: IProductCardProps) => {
     const {addProductToCart, getProductById, renderProducts} = useContext(UserContext)
 
+
+
     const price = Number(product.price)
     const formattedPrice = price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
+    
     return (
         <StyledUserProductCard>
             <img className="productImage" src = {product.image}/>
             <Paragraph className="productName">{product.name}</Paragraph>
             <Paragraph className = "productPrice">{formattedPrice}</Paragraph>
             <div className = "addToCartController">
-                <img src = {AddToCart} onClick={() => addProductToCart(product)}/>
+                <img src = {AddToCart} onClick={() => addProductToCart(product)
+                }/>
                 <Paragraph className="productPageButton" onClick = {() => {
                     getProductById(product.id)
                     renderProducts(product.id)

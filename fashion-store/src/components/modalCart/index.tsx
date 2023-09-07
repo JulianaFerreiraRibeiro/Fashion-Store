@@ -29,7 +29,7 @@ export const ModalCart = () => {
             </StyledProductList>
         </section>
         <StyledProductTotal>
-          <Paragraph>TOTAL <span>{formattedPrice}</span></Paragraph>
+          <Paragraph> TOTAL <span>{formattedPrice}</span></Paragraph>
         </StyledProductTotal>
       </StyledDivModal>
     </StyledModal>

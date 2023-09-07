@@ -20,6 +20,8 @@ export interface IUserContextProps{
     renderProducts: (productId: number) => Promise<void>;
     userProductsList: IListProducts[];
     productsList: IListProducts[];
+    productCounter: number;
+    setProductCounter: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const UserContext = createContext({} as IUserContextProps)
@@ -33,6 +35,7 @@ export const UserProvider = ({children}: IUserProviderProps) => {
     const [product, setProduct] = useState<IListProducts | undefined>(undefined)
     const [userProductsList, setUserProductsList] = useState<IListProducts[]>([])
     const [productsList, setProductsList] = useState<IListProducts[]>([])
+    const [productCounter, setProductCounter] = useState(0)
 
     
     useEffect(() => {
@@ -61,14 +64,18 @@ export const UserProvider = ({children}: IUserProviderProps) => {
 
     const addProductToCart = (product: IListProducts | undefined) => {
         if(product){
-            setCartList([...cartList, product])
-            toast.success("Produto adicionado com sucesso")
-            console.log(cartList)
-            localStorage.setItem("@FashionStore:cartlist", JSON.stringify(cartList))
+            const isProductInCart = cartList.find((cartProduct) => cartProduct.id === product.id);
+            if(isProductInCart){
+                toast.warning("Produto já foi adicionado ao carrinho!")
+            } else {
+                setCartList([...cartList, product])
+                toast.success("Produto adicionado com sucesso!")
+                localStorage.setItem("@FashionStore:cartlist", JSON.stringify(cartList))
+            }
         }
     }
 
-     const removeProductFromCart = (productId: number) => {
+    const removeProductFromCart = (productId: number) => {
         const removedProduct = cartList.filter((product) => product.id !== productId)
         setCartList(removedProduct)
         toast.success("Produto removido com sucesso")
@@ -107,7 +114,7 @@ export const UserProvider = ({children}: IUserProviderProps) => {
 
 
     return(
-        <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart, removeProductFromCart, getProductById, product, renderProducts, userProductsList, productsList}}>
+        <UserContext.Provider value={{cartList, setCartList, isCartModalOpen, setIsCartModalOpen, addProductToCart, removeProductFromCart, getProductById, product, renderProducts, userProductsList, productsList, productCounter, setProductCounter}}>
             {children}
         </UserContext.Provider>
     )
