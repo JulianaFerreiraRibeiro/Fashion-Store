@@ -32,6 +32,7 @@ export interface IAdmin{
 
 
 export interface IListProducts {
+    quantity: number;
     id: number;
     name: string;
     price: string;

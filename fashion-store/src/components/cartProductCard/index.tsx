@@ -7,8 +7,10 @@ import { UserContext } from "../../providers/UserContext"
 
 export const CartProductCard = ({product}: IProductCardProps) => {
     const {removeProductFromCart} = useContext(UserContext)
+
     const price = Number(product.price)
     const formattedPrice = price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    
     return(
         <StyledProductCartList>
             <img src = {product.image} className="productImage"/>
