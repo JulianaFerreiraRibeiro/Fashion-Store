@@ -1,27 +1,20 @@
-# React + TypeScript + Vite
+<h1>Fashion Store</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h4>Olá! Seja bem vindo a minha aplicação que consiste em venda de produtos, especificamente, focado em roupas!</h4>
 
-Currently, two official plugins are available:
+<h4>Nesta aplicação é possível logar como administrador e criar, editar, deletar seus próprios produtos. Como cliente é possível adicionar os produtos no carrinho de compras e ao clicar em 'Saiba mais' é possível ver todos os detalhes do produto (como nome, preço e descrição). 
+Foi feita a proteção de rotas para que o usuário que não esteja logado não tenha acesso a dashboard de administrador</h4>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p>Feito com TypeScript, React, React-Hook-Form, React-Router-Dom, Toastify e Styled-Components</p>
 
-## Expanding the ESLint configuration
+<h2>Rede de contato:</h2>
+<p>Caso tenham observações de melhoria a fazer na aplicação ou apenas se quiserem se conectar comigo no Linkedin! Podemos trocar várias ideias :)</p>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<a href = "https://www.linkedin.com/in/julianaferreiraribeiro/"> Linkedin </a>
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+<h2>Link da aplicação no Vercel:</h2>
+<p>Observação: é possível que a API demore para rodar após tempo sem uso, para fim de teste, tente cadastrar sua empresa até que a mensagem de "cadastro realizado com sucesso" apareça em tela. Após isso, poderá testar as demais funcionalidades.</p>
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+<a href = "https://fashions-store.vercel.app/"> 
+<h3>Fashion Store Link </h3>
