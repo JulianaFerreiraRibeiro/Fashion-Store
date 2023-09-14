@@ -5,7 +5,7 @@
 <h4>Nesta aplicação é possível logar como administrador e criar, editar, deletar seus próprios produtos. Como cliente é possível adicionar os produtos no carrinho de compras e ao clicar em 'Saiba mais' é possível ver todos os detalhes do produto (como nome, preço e descrição). 
 Foi feita a proteção de rotas para que o usuário que não esteja logado não tenha acesso a dashboard de administrador</h4>
 
-<p>Feito com TypeScript, React, React-Hook-Form, React-Router-Dom, Toastify e Styled-Components</p>
+<p>Feito com TypeScript, React, React-Hook-Form, React-Router-Dom, Toastify, Axios e Styled-Components</p>
 
 <h2>Rede de contato:</h2>
 <p>Caso tenham observações de melhoria a fazer na aplicação ou apenas se quiserem se conectar comigo no Linkedin! Podemos trocar várias ideias :)</p>
